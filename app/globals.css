@@ -38,3 +38,5 @@
 .refCats>a:hover{transform:translateY(-6px);border-color:#0788ec;box-shadow:0 20px 42px #0077cf3d,inset 0 1px #fff}
 .refCats>a>div:first-child>b{color:#043d70;font-size:17px}.refCats>a>div:first-child>span{color:#315875}.refCats small{border-radius:8px;box-shadow:0 7px 16px #057fd34d}
 .sectorStrip>a{transition:transform .22s ease,box-shadow .22s ease}.sectorStrip>a:hover{transform:translateY(-4px);box-shadow:0 12px 25px #005fa52b}
+.mobileMenu{display:none}
+@media(max-width:650px){.mobileMenu{display:block;position:absolute;left:13px;top:20px;z-index:40}.mobileMenu summary{display:grid;place-items:center;width:43px;height:43px;border-radius:9px;background:#07182a;color:#fff;font-size:25px;cursor:pointer;list-style:none}.mobileMenu summary::-webkit-details-marker{display:none}.mobileMenu>div{position:absolute;top:52px;left:0;width:230px;padding:10px;background:#06182af5;border:1px solid #248fd7;border-radius:13px;box-shadow:0 18px 40px #00101c80;display:flex;flex-direction:column}.mobileMenu>div a{padding:13px 14px;color:#fff;border-bottom:1px solid #ffffff18;font-size:14px;font-weight:700}.mobileMenu>div a:last-child{border:0}}
