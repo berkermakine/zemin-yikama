@@ -50,3 +50,48 @@
 }
 @media(max-width:370px){.shopCard{grid-template-columns:112px minmax(0,1fr);column-gap:10px}.shopHero h1{font-size:32px}.shopCard h2{font-size:14px}}
 .imageUpload{position:relative;border:2px dashed #bdd4e3;border-radius:11px;padding:12px!important;text-align:center;background:#f7fbfe;cursor:pointer}.imageUpload>span{align-self:flex-start}.imageUpload .partPhoto{width:100%;height:145px;background-color:#fff;border-radius:8px}.imageUpload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.imageUpload b{color:#087fd8;font-size:12px}.imageUpload small{color:#71808b;font-weight:400}.imageUpload em{color:#b32626;font-style:normal}.removeImage{border:1px solid #e5baba;background:#fff4f4;color:#a72b2b;padding:9px;border-radius:7px;cursor:pointer}
+@media(max-width:650px){
+ .adminApp{display:block;min-height:100vh;background:#eef4f8;overflow-x:hidden}
+ .adminSide{height:64px;display:flex;align-items:center;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;padding:9px 10px;background:#061526;position:sticky;top:0;z-index:30;scrollbar-width:none;box-shadow:0 8px 20px #00101d30}
+ .adminSide::-webkit-scrollbar{display:none}
+ .adminBrand{display:none}
+ .adminSide button,.adminSide a{flex:0 0 auto;white-space:nowrap;font-size:11px!important;padding:11px 13px!important;border-radius:9px;color:#cfe0ec}
+ .adminSide button.active{background:#0789ec;color:#fff;box-shadow:0 6px 14px #0789ec40}
+ .adminSide a:last-child{margin:0;background:#102a3e}
+ .adminMain{padding:18px 11px 35px}
+ .adminMain>header{display:flex;align-items:flex-start;gap:12px}
+ .adminMain>header>div{min-width:0}
+ .adminMain header small{font-size:9px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .adminMain h1{font-size:25px;line-height:1.05;margin-top:7px}
+ .adminMain header>button{flex:0 0 auto;font-size:9px;padding:11px 10px;max-width:116px}
+ .adminStats{grid-template-columns:1fr 1fr;gap:8px;margin:17px 0}
+ .adminStats article{padding:14px 13px;border-radius:11px;gap:5px;box-shadow:0 6px 18px #06192b0c}
+ .adminStats span{font-size:10px}.adminStats b{font-size:23px}
+ .adminWorkspace{display:flex;flex-direction:column;gap:12px}
+ .adminEdit{order:-1;padding:15px;border-radius:13px;gap:13px}
+ .adminEdit h2{font-size:21px}
+ .adminEdit input,.adminEdit select,.adminEdit textarea,.adminSettings input{font-size:16px;min-height:44px}
+ .adminEdit>div{gap:8px}
+ .imageUpload .partPhoto{height:190px}
+ .editActions{position:sticky;bottom:8px;z-index:5;background:#fff;padding-top:8px}
+ .editActions button{min-height:44px}
+ .adminTable{padding:12px;overflow:visible;border-radius:13px}
+ .tableTitle{align-items:flex-start;flex-direction:column}
+ .tableTitle h2{margin:2px 0}.tableTitle form{width:100%}.tableTitle input{min-width:0;flex:1;font-size:16px}
+ .adminTable>article{min-width:0!important;grid-template-columns:66px minmax(0,1fr) 34px 34px;grid-template-rows:auto auto auto;gap:6px 8px;padding:12px 0;font-size:10px}
+ .adminTable .partPhoto{grid-column:1;grid-row:1/4;width:66px;height:66px;border-radius:9px;background-color:#f7fafc}
+ .adminTable article>div:nth-child(2){grid-column:2/5;grid-row:1;min-width:0;padding-right:3px}
+ .adminTable article>div:nth-child(2) b{font-size:13px;white-space:normal;line-height:1.2}
+ .adminTable article>span{grid-column:2;grid-row:2;color:#71808b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .adminTable article>strong{grid-column:3;grid-row:2;text-align:center}
+ .adminTable article>b{grid-column:4;grid-row:2;text-align:right;font-size:11px}
+ .adminTable article>em{grid-column:2;grid-row:3;justify-self:start}
+ .adminTable article>button:nth-last-child(2){grid-column:3;grid-row:3}.adminTable article>button:last-child{grid-column:4;grid-row:3}
+ .adminList,.adminSettings{padding:14px;border-radius:13px}
+ .adminList>article{grid-template-columns:1fr auto;gap:10px;padding:13px 0;align-items:start}
+ .adminList>article>div:first-child{grid-column:1/-1}
+ .adminList>article>strong{font-size:14px}.adminList>article>select{max-width:145px}
+ .adminList>article>.stockButtons{grid-column:2;grid-row:2}
+ .adminPanels{grid-template-columns:1fr;gap:10px}.adminPanels article{padding:18px}.adminPanels p{min-height:0}
+ .adminSettings{gap:14px}.adminSettings .shopPrimary{width:100%;min-height:46px}
+}
