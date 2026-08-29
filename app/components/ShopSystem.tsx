@@ -106,8 +106,15 @@ function MachineManager(){
 }
 
 function AdminGate({children}:{children:React.ReactNode}){
- void children;
- return <main className="adminLogin"><div className="adminLoginLogo" aria-label="Zeminyikama.com"/><small>DEMO SÜRÜMÜ</small><h1>Yönetim Alanı Kapalı</h1><p>Güvenlik nedeniyle herkese açık demo yayınında yönetim paneli devre dışıdır.</p><a href="/yedek-parca">← Yedek parçaya dön</a></main>
+ const [status,setStatus]=useState<'checking'|'guest'|'authenticated'>('checking');
+ const [error,setError]=useState('');
+ const [submitting,setSubmitting]=useState(false);
+ useEffect(()=>{let active=true;fetch('/api/admin/session',{credentials:'same-origin',cache:'no-store'}).then(response=>{if(active)setStatus(response.ok?'authenticated':'guest')}).catch(()=>{if(active)setStatus('guest')});return()=>{active=false}},[]);
+ const login=async(event:FormEvent<HTMLFormElement>)=>{event.preventDefault();setSubmitting(true);setError('');const data=new FormData(event.currentTarget);try{const response=await fetch('/api/admin/login',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:String(data.get('username')||''),password:String(data.get('password')||'')})});const result=await response.json() as {message?:string};if(!response.ok){setError(result.message||'Giriş yapılamadı.');return}event.currentTarget.reset();setStatus('authenticated')}catch{setError('Bağlantı kurulamadı. Lütfen tekrar deneyin.')}finally{setSubmitting(false)}};
+ const logout=async()=>{await fetch('/api/admin/logout',{method:'POST',credentials:'same-origin'}).catch(()=>undefined);setStatus('guest')};
+ if(status==='checking')return <main className="adminLogin"><form><div className="adminLoginLogo" aria-label="Zeminyikama.com"/><small>GÜVENLİ YÖNETİM</small><h1>Oturum kontrol ediliyor</h1><p>Lütfen kısa bir süre bekleyin.</p></form></main>;
+ if(status==='authenticated')return <div className="adminAuthenticated">{children}<button className="adminLogout" type="button" onClick={logout}>GÜVENLİ ÇIKIŞ</button></div>;
+ return <main className="adminLogin"><form onSubmit={login}><div className="adminLoginLogo" aria-label="Zeminyikama.com"/><small>GÜVENLİ YÖNETİM</small><h1>Yönetim paneli girişi</h1><p>Yönetim bilgileri yalnızca sunucuda doğrulanır ve hiçbir parola tarayıcıya gönderilmez.</p><label>Kullanıcı adı<input name="username" autoComplete="username" maxLength={100} required autoFocus/></label><label>Parola<input name="password" type="password" autoComplete="current-password" maxLength={256} required/></label>{error&&<b role="alert">{error}</b>}<button type="submit" disabled={submitting}>{submitting?'DOĞRULANIYOR…':'GÜVENLİ GİRİŞ'}</button><a href="/yedek-parca">← Yedek parçaya dön</a></form></main>
 }
 
 function Admin({products,orders,updateProducts,updateOrders}:{products:Product[];orders:Order[];updateProducts:(v:Product[])=>void;updateOrders:(v:Order[])=>void}){
