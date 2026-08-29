@@ -1,0 +1,27 @@
+# Berker Makine — Zemin Yıkama Makineleri
+
+Canonical site: https://www.zeminyikama.com
+Language: Turkish (tr-TR)
+Business: Professional floor-scrubber sales, rental, service and spare parts in Türkiye.
+Contact: +90 537 522 39 46 | info@berkermakine.com
+
+## Active machine catalogue
+
+- Ecoline Titan 90 (X68): Ride-on, 2 × 330 mm brushes, 920 mm squeegee, 75/80 L tanks, 4650 m²/hour. https://www.zeminyikama.com/urun/ecoline-titan-90-binicili-zemin-yikama-makinesi
+- Ecoline Titan 140 (X86): Ride-on, 2 × 405 mm brushes, 1080 mm squeegee, 120/125 L tanks, 6450 m²/hour. https://www.zeminyikama.com/urun/ecoline-titan-140-binicili-zemin-yikama-makinesi
+- Ecoline Titan 240 (X96): Ride-on, 2 × 460 mm brushes, 1200 mm squeegee, 170/175 L tanks, 7980 m²/hour. https://www.zeminyikama.com/urun/ecoline-titan-240-binicili-zemin-yikama-makinesi
+- Berker Ecoline B250: Ride-on, 1040 mm brush width, 230/235 L tanks, 9450 m²/hour. https://www.zeminyikama.com/urun/ecoline-b250-binicili-zemin-temizleme-otomati
+- Berker Ecoline B140: Ride-on, 860 mm brush width, 125/130 L tanks, 5500 m²/hour. https://www.zeminyikama.com/urun/ecoline-b140-binicili-zemin-temizleme-makinasi
+- Berker Ecoline B60: Walk-behind, 510 mm brush width, 55/60 L tanks, 2000 m²/hour. https://www.zeminyikama.com/urun/ecoline-b60-zemin-temizleme-makinasi
+- Berker Ecoline B45: Walk-behind, 510 mm brush width, 40/45 L tanks, 2150 m²/hour. https://www.zeminyikama.com/urun/berker-ecoline-b45-akulu-itmeli-zemin-otomati
+
+## Primary resources
+
+- Machine catalogue: https://www.zeminyikama.com/zemin-yikama-makineleri
+- Sector solutions: https://www.zeminyikama.com/sektorler
+- Technical guides: https://www.zeminyikama.com/blog
+- Service: https://www.zeminyikama.com/servis
+- Spare parts: https://www.zeminyikama.com/yedek-parca
+- Contact and quotation: https://www.zeminyikama.com/iletisim
+
+Technical values are tied to their named model and should not be generalized to other machines. Product suitability depends on the site, floor, dirt, operating time and access conditions. Last updated: 2026-08-29.

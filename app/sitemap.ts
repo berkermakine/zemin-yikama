@@ -1,2 +1,14 @@
-import type { MetadataRoute } from 'next';
-export default function sitemap():MetadataRoute.Sitemap{const base='https://www.zeminyikama.com';const paths=['','/zemin-yikama-makineleri','/zemin-yikama-makineleri/binicili','/zemin-yikama-makineleri/iticili','/zemin-yikama-makineleri/supuruculer','/kiralama','/servis','/yedek-parca','/ikinci-el','/sektorler','/sektorler/fabrika','/sektorler/depo','/sektorler/avm','/sektorler/otopark','/sektorler/hastane','/sektorler/otel','/sektorler/market','/sektorler/okul','/sektorler/belediye','/sektorler/lojistik','/blog','/blog/zemin-tipine-gore-makine-secimi','/blog/kiralama-mi-satin-alma-mi','/blog/temizlik-makinesi-bakim-plani','/blog/fabrika-zemin-temizligi-planlama','/blog/depo-koridorlarinda-makine-secimi','/blog/gunluk-makine-kontrol-listesi','/blog/zemin-yikama-makinesi-nasil-secilir','/blog/binicili-ve-itmeli-makine-farklari','/blog/zemin-yikama-makinesi-bakimi','/teklif-al','/makine-secici','/karsilastir','/iletisim','/lp/zemin-yikama-makinesi','/lp/kiralama'];return paths.map((p,i)=>({url:base+p,lastModified:new Date(),changeFrequency:i===0?'weekly':'monthly',priority:i===0?1:p.startsWith('/blog/')?.7:p.startsWith('/lp/')?.6:.8}))}
+import type {MetadataRoute} from 'next';
+import {blogPosts,CONTENT_DATE,machineSeo,sectorPages,SITE_URL,sparePartSeo} from './seo-content';
+
+export default function sitemap():MetadataRoute.Sitemap{
+ const core=['','/zemin-yikama-makineleri','/zemin-yikama-makineleri/binicili','/zemin-yikama-makineleri/iticili','/kiralama','/servis','/yedek-parca','/ikinci-el','/sektorler','/blog','/hakkimizda','/teklif-al','/makine-secici','/karsilastir','/iletisim'];
+ const paths=[...core,...machineSeo.map(x=>`/urun/${x.slug}`),...sparePartSeo.map(x=>`/yedek-parca/urun/${x.slug}`),...sectorPages.map(x=>`/sektorler/${x.slug}`),...blogPosts.map(x=>`/blog/${x.slug}`)];
+ const lastModified=new Date(`${CONTENT_DATE}T12:00:00Z`);
+ return paths.map(path=>({
+  url:new URL(path||'/',SITE_URL).toString(),
+  lastModified,
+  changeFrequency:path===''?'weekly':path.startsWith('/blog/')?'monthly':'monthly',
+  priority:path===''?1:path==='/zemin-yikama-makineleri'?0.95:path.startsWith('/urun/')?0.9:path.startsWith('/blog/')||path.startsWith('/sektorler/')?0.75:0.8
+ }));
+}

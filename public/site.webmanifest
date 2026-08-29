@@ -1,0 +1,14 @@
+{
+  "name": "Zemin Yıkama Makineleri | Berker Makine",
+  "short_name": "Berker Makine",
+  "description": "Profesyonel zemin yıkama makineleri, servis ve yedek parça çözümleri.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#041322",
+  "theme_color": "#041322",
+  "lang": "tr-TR",
+  "icons": [
+    {"src": "/favicon-180.png", "sizes": "180x180", "type": "image/png"},
+    {"src": "/favicon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

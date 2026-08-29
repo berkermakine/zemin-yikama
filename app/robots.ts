@@ -1,2 +1,13 @@
-import type { MetadataRoute } from 'next';
-export default function robots():MetadataRoute.Robots{return {rules:{userAgent:'*',allow:'/'},sitemap:'https://www.zeminyikama.com/sitemap.xml',host:'https://www.zeminyikama.com'}}
+import type {MetadataRoute} from 'next';
+import {SITE_URL} from './seo-content';
+
+export default function robots():MetadataRoute.Robots{
+ return {
+  rules:[
+   {userAgent:'*',allow:'/',disallow:['/admin']},
+   {userAgent:'Googlebot',allow:'/',disallow:['/admin']}
+  ],
+  sitemap:[`${SITE_URL}/sitemap.xml`,`${SITE_URL}/image-sitemap.xml`],
+  host:SITE_URL
+ };
+}
