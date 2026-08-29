@@ -22,7 +22,7 @@ export const metadata:Metadata={
 };
 
 const schema={'@context':'https://schema.org','@graph':[
- {'@type':'Organization','@id':`${SITE_URL}/#organization`,name:'Berker Makine',alternateName:'Zemin Yıkama Makineleri',url:SITE_URL,logo:{'@type':'ImageObject',url:`${SITE_URL}/logo-desktop.webp`},email:'info@berkermakine.com',contactPoint:{'@type':'ContactPoint',telephone:'+90-537-522-39-46',contactType:'sales and customer service',areaServed:'TR',availableLanguage:'tr'}},
+ {'@type':'Organization','@id':`${SITE_URL}/#organization`,name:'Berker Makine',alternateName:'Zemin Yıkama Makineleri',url:SITE_URL,logo:{'@type':'ImageObject',url:`${SITE_URL}/logo-desktop.webp`},email:'info@zeminyikama.com',contactPoint:{'@type':'ContactPoint',telephone:'+90-537-522-39-46',contactType:'sales and customer service',areaServed:'TR',availableLanguage:'tr'}},
  {'@type':'WebSite','@id':`${SITE_URL}/#website`,url:SITE_URL,name:'Zemin Yıkama Makineleri',alternateName:'Berker Makine',publisher:{'@id':`${SITE_URL}/#organization`},inLanguage:'tr-TR'}
 ]};
 

@@ -194,7 +194,7 @@ body.cartDrawerOpen{overflow:hidden}
 .premiumHero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,7,16,.5) 0%,rgba(0,7,16,.14) 38%,rgba(0,7,16,.06) 70%,rgba(0,7,16,.62) 100%);z-index:-2}
 .premiumHeroGlow{position:absolute;left:50%;top:15%;width:60%;height:70%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(0,122,255,.25),transparent 64%);z-index:-1;pointer-events:none}
 .premiumHeroTitle{position:absolute;z-index:2;top:38px;left:50%;width:72%;transform:translateX(-50%);text-align:center}
-.premiumHeroTitle h1{margin:0;font-size:58px;line-height:1.1;letter-spacing:.025em;font-weight:900;text-shadow:0 5px 22px #000,0 1px 1px #000}
+.premiumHeroTitle h1{margin:0;font-family:'Roboto Condensed','Arial Narrow',Arial,sans-serif;font-size:58px;line-height:.96;letter-spacing:-.04em;font-weight:900;font-stretch:condensed;text-shadow:0 5px 22px #000,0 1px 1px #000}
 .premiumHeroTitle h1 span{font-size:57px}
 .premiumHeroTitle p{margin:18px 0 0;font-family:Arial,sans-serif;font-size:26px;letter-spacing:.13em;color:#f2f5fa;text-shadow:0 3px 15px #000}
 .premiumHeroTitle p b{color:var(--premium-blue);padding:0 12px}
