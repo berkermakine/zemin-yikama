@@ -6,7 +6,7 @@ const securityHeaders=[
  {key:'Permissions-Policy',value:'camera=(), microphone=(), geolocation=(), payment=()'},
  {key:'Cross-Origin-Opener-Policy',value:'same-origin-allow-popups'},
 ];
-const nextConfig:NextConfig={async headers(){return [{source:'/:path*',headers:securityHeaders}]},async redirects(){return [
+const nextConfig:NextConfig={output:'standalone',async headers(){return [{source:'/:path*',headers:securityHeaders}]},async redirects(){return [
  {source:'/urunler',destination:'/zemin-yikama-makineleri',permanent:true},
  {source:'/makineler',destination:'/zemin-yikama-makineleri',permanent:true},
  {source:'/makineler/:path*',destination:'/zemin-yikama-makineleri/:path*',permanent:true},
