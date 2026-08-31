@@ -158,13 +158,4 @@ export const machineSeo:MachineSeo[] = [
   {slug:'ecoline-b140-binicili-zemin-temizleme-makinasi',name:'Berker Ecoline B140',kind:'Binicili',description:'860 mm çift fırça, 125/130 litre tank ve kompakt sürüş yapısıyla profesyonel binicili zemin temizleme makinesi.',image:'/b140-showcase.webp',imageAlt:'Berker Ecoline B140 binicili zemin temizleme makinesi',specs:[['Fırça genişliği','860 mm'],['Çalışma kapasitesi','5500 m²/saat'],['Temiz/Kirli su','125/130 litre']]}
 ];
 
-export const sparePartSeo = [
-  {slug:'firca-diski-17-orta-sert',name:'Fırça Diski – 17 İnç Orta Sert',description:'Günlük zemin temizliği için orta sertlikte profesyonel fırça diski.',image:'/parts/part-0.webp',sku:'FD17-OS',price:1250,stock:34},
-  {slug:'silecek-lastigi-on-890mm',name:'Silecek Lastiği – Ön 890 mm',description:'Temiz ve iz bırakmayan su toplama performansı için dayanıklı ön silecek lastiği.',image:'/parts/part-1.webp',sku:'SL-890-O',price:620,stock:12},
-  {slug:'vakum-motoru-36v-550w',name:'Vakum Motoru – 36V 550W',description:'Profesyonel zemin yıkama makineleri için kompakt vakum motoru.',image:'/parts/part-2.webp',sku:'VM-36V-550',price:3750,stock:8},
-  {slug:'aku-sarj-cihazi-24v-15a',name:'Akü Şarj Cihazı – 24V 15A',description:'24 volt zemin temizleme makinesi akü grupları için şarj cihazı.',image:'/parts/part-3.webp',sku:'SC-24V-15A',price:4950,stock:15},
-  {slug:'emis-hortumu-38mm',name:'Emiş Hortumu – 38 mm',description:'Zemin yıkama makinelerinin kirli su emiş hattı için esnek hortum.',image:'/parts/part-4.webp',sku:'EH-38',price:480,stock:22},
-  {slug:'vakum-filtresi-polyester',name:'Vakum Filtresi – Polyester',description:'Vakum hattını parçacıklardan korumaya yardımcı polyester filtre.',image:'/parts/part-5.webp',sku:'VF-POL',price:350,stock:19},
-  {slug:'jel-aku-12v-105ah',name:'Jel Akü – 12V 105Ah',description:'Akülü zemin temizleme makineleri için bakım gerektirmeyen jel akü.',image:'/parts/part-6.webp',sku:'AKU-12-105',price:6800,stock:6},
-  {slug:'pad-tutucu-17',name:'Pad Tutucu – 17 İnç',description:'17 inç temizlik pedleriyle uyumlu profesyonel pad tutucu.',image:'/parts/part-7.webp',sku:'PT-17',price:950,stock:27}
-];
+export {spareParts as sparePartSeo} from './product-data';
