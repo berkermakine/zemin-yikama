@@ -1,7 +1,7 @@
 const encoder = new TextEncoder();
 
 export const ADMIN_COOKIE = 'zy_admin_session';
-export const SESSION_TTL_SECONDS = 60 * 60;
+export const SESSION_TTL_SECONDS = 60 * 60 * 12;
 
 function base64Url(bytes: Uint8Array) {
   let binary = '';
@@ -78,7 +78,16 @@ export function isSameOrigin(request: Request) {
   const fetchSite = request.headers.get('sec-fetch-site');
   if (fetchSite === 'same-origin') return true;
   const origin = request.headers.get('origin');
-  return Boolean(origin && origin === new URL(request.url).origin);
+  if (!origin) return false;
+  const url = new URL(request.url);
+  const forwardedHost = request.headers.get('x-forwarded-host')?.split(',')[0]?.trim();
+  const forwardedProto = request.headers.get('x-forwarded-proto')?.split(',')[0]?.trim() || 'https';
+  const expected = forwardedHost ? `${forwardedProto}://${forwardedHost}` : url.origin;
+  return origin === expected || origin === url.origin;
+}
+
+export async function adminAuthorized(request:Request){
+  return verifySessionToken(cookieValue(request,ADMIN_COOKIE));
 }
 
 export const privateHeaders = {

@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {notFound,permanentRedirect} from 'next/navigation';
 import SiteShell from '../components/SiteShell';
 import {blogPosts,CONTENT_DATE,machineSeo,sectorPages,SITE_URL,sparePartSeo} from '../seo-content';
+import {getProducts,type ShopProduct} from '../lib/shop-store';
 
 type RouteSeo={title:string;description:string;canonical?:string;index?:boolean;image?:string;type?:'website'|'article'};
 
@@ -34,13 +35,13 @@ function redirectLegacy(slug:string[]){
  if(slug[0]==='urunler')permanentRedirect('/zemin-yikama-makineleri');
 }
 
-function getRouteSeo(slug:string[]):RouteSeo|null{
+function getRouteSeo(slug:string[],products:ShopProduct[]=sparePartSeo):RouteSeo|null{
  const path=slug.join('/');
  if(staticRoutes[path])return staticRoutes[path];
  if(slug[0]==='blog'&&slug.length===2){const p=blogPosts.find(x=>x.slug===slug[1]);return p?{title:p.title,description:p.description,type:'article'}:null}
  if(slug[0]==='sektorler'&&slug.length===2){const s=sectorPages.find(x=>x.slug===slug[1]);return s?{title:s.title,description:s.description}:null}
  if(slug[0]==='urun'&&slug.length===2){const m=machineSeo.find(x=>x.slug===slug[1]);return m?{title:`${m.name} ${m.kind} Zemin Yıkama Makinesi`,description:m.description,image:m.image}:null}
- if(slug[0]==='yedek-parca'&&slug[1]==='urun'&&slug.length===3){const p=sparePartSeo.find(x=>x.slug===slug[2]);return p?{title:`${p.name} | Yedek Parça`,description:p.metaDescription,image:p.image}:null}
+ if(slug[0]==='yedek-parca'&&slug[1]==='urun'&&slug.length===3){const p=products.find(x=>x.slug===slug[2]);return p?{title:`${p.name} | Yedek Parça`,description:p.metaDescription,image:p.image}:null}
  return null;
 }
 
@@ -48,7 +49,8 @@ function absolute(path:string){return new URL(path,SITE_URL).toString()}
 
 export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{
  const {slug}=await params;
- const route=getRouteSeo(slug);
+ const products=slug[0]==='yedek-parca'?await getProducts():undefined;
+ const route=getRouteSeo(slug,products);
  if(!route)return {title:'Sayfa Bulunamadı',robots:{index:false,follow:false}};
  const path=slug.join('/');
  const canonical=absolute(route.canonical||`/${path}`);
@@ -74,22 +76,23 @@ function breadcrumbSchema(slug:string[],route:RouteSeo){
  return {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:items.map(([name,url],index)=>({'@type':'ListItem',position:index+1,name,item:absolute(url)}))};
 }
 
-function pageSchemas(slug:string[],route:RouteSeo){
+function pageSchemas(slug:string[],route:RouteSeo,products:ShopProduct[]=sparePartSeo){
  const schemas:Record<string,unknown>[]=[breadcrumbSchema(slug,route)];
  const url=absolute(route.canonical||`/${slug.join('/')}`);
  if(slug.join('/')==='zemin-yikama-makineleri')schemas.push({'@context':'https://schema.org','@type':'CollectionPage','@id':`${url}#collection`,url,name:route.title,description:route.description,inLanguage:'tr-TR',mainEntity:{'@type':'ItemList',numberOfItems:machineSeo.length,itemListElement:machineSeo.map((m,index)=>({'@type':'ListItem',position:index+1,url:absolute(`/urun/${m.slug}`),name:m.name,image:absolute(m.image)}))}});
- if(slug.join('/')==='yedek-parca')schemas.push({'@context':'https://schema.org','@type':'CollectionPage','@id':`${url}#collection`,url,name:route.title,description:route.description,inLanguage:'tr-TR',mainEntity:{'@type':'ItemList',numberOfItems:sparePartSeo.filter(p=>p.active).length,itemListElement:sparePartSeo.filter(p=>p.active).map((p,index)=>({'@type':'ListItem',position:index+1,url:absolute(`/yedek-parca/urun/${p.slug}`),name:p.name,image:absolute(p.image)}))}});
+ if(slug.join('/')==='yedek-parca')schemas.push({'@context':'https://schema.org','@type':'CollectionPage','@id':`${url}#collection`,url,name:route.title,description:route.description,inLanguage:'tr-TR',mainEntity:{'@type':'ItemList',numberOfItems:products.filter(p=>p.active).length,itemListElement:products.filter(p=>p.active).map((p,index)=>({'@type':'ListItem',position:index+1,url:absolute(`/yedek-parca/urun/${p.slug}`),name:p.name,image:absolute(p.image)}))}});
  if(slug[0]==='blog'&&slug.length===2){const p=blogPosts.find(x=>x.slug===slug[1]);if(p)schemas.push({'@context':'https://schema.org','@type':'Article',headline:p.title,description:p.description,datePublished:CONTENT_DATE,dateModified:CONTENT_DATE,inLanguage:'tr-TR',mainEntityOfPage:url,author:{'@type':'Organization',name:'Berker Makine',url:absolute('/hakkimizda')},publisher:{'@id':`${SITE_URL}/#organization`}})}
  if(slug[0]==='urun'&&slug.length===2){const m=machineSeo.find(x=>x.slug===slug[1]);if(m){const imageId=`${url}#primaryimage`;schemas.push({'@context':'https://schema.org','@type':'WebPage','@id':`${url}#webpage`,url,name:route.title,description:route.description,inLanguage:'tr-TR',primaryImageOfPage:{'@type':'ImageObject','@id':imageId,url:absolute(m.image),contentUrl:absolute(m.image),caption:m.imageAlt},about:{'@type':'Thing',name:m.name,alternateName:m.alternateName,description:m.description,image:absolute(m.image),url},isPartOf:{'@id':`${SITE_URL}/#website`}})}}
- if(slug[0]==='yedek-parca'&&slug[1]==='urun'&&slug.length===3){const p=sparePartSeo.find(x=>x.slug===slug[2]);if(p){const productId=`${url}#product`;const offerId=`${url}#offer`;schemas.push({'@context':'https://schema.org','@type':'Product','@id':productId,name:p.name,description:p.description,image:[absolute(p.image)],sku:p.sku,...(p.gtin?{gtin:p.gtin}:{}),...(p.mpn?{mpn:p.mpn}:{}),brand:{'@type':'Brand',name:p.brand},category:p.category,url,mainEntityOfPage:url,offers:{'@type':'Offer','@id':offerId,url,priceCurrency:p.currency,price:p.price.toFixed(2),availability:p.stock>0?'https://schema.org/InStock':'https://schema.org/OutOfStock',itemCondition:'https://schema.org/NewCondition',seller:{'@id':`${SITE_URL}/#organization`}}})}}
+ if(slug[0]==='yedek-parca'&&slug[1]==='urun'&&slug.length===3){const p=products.find(x=>x.slug===slug[2]);if(p){const productId=`${url}#product`;const offerId=`${url}#offer`;schemas.push({'@context':'https://schema.org','@type':'Product','@id':productId,name:p.name,description:p.description,image:[absolute(p.image)],sku:p.sku,...(p.gtin?{gtin:p.gtin}:{}),...(p.mpn?{mpn:p.mpn}:{}),brand:{'@type':'Brand',name:p.brand},category:p.category,url,mainEntityOfPage:url,offers:{'@type':'Offer','@id':offerId,url,priceCurrency:p.currency,price:p.price.toFixed(2),availability:p.stock>0?'https://schema.org/InStock':'https://schema.org/OutOfStock',itemCondition:'https://schema.org/NewCondition',seller:{'@id':`${SITE_URL}/#organization`}}})}}
  return schemas;
 }
 
 export default async function CatchAll({params}:{params:Promise<{slug:string[]}>}){
  const {slug}=await params;
  redirectLegacy(slug);
- const route=getRouteSeo(slug);
+ const products=slug[0]==='yedek-parca'?await getProducts():undefined;
+ const route=getRouteSeo(slug,products);
  if(!route)notFound();
- const schemas=pageSchemas(slug,route);
+ const schemas=pageSchemas(slug,route,products);
  return <>{schemas.map((schema,index)=><script key={index} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/>)}<SiteShell slug={slug}/></>;
 }
