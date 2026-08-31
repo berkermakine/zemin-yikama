@@ -40,8 +40,11 @@ Bu dosya projenin kalıcı görev ve doğrulama kaydıdır. Yeni istekler önce 
 
 ## İçerik ve Görsel İşleri
 
-- [x] Blog kapaklarında Titan 90, Titan 140 ve Titan 240 makine görsellerini kullan. ✅
-- [x] Blog görsellerinde makinenin kutuya taşmadan oturması için `object-fit: contain` uygula. ✅
+- [x] Kullanıcının verdiği yedi yeni Berker Makine görselini blog kartlarına uygula. ✅
+- [x] B45, B140, Titan 90, Titan 140, Titan 240, B250 ve B60 blog görsellerini 1536×1024 WebP olarak optimize et. ✅
+- [x] Blog kartı ile aynı yazının iç kapağında aynı görseli kullan. ✅
+- [x] Masaüstü ve mobilde kırpılmadan tam görünmesi için blog görsellerini 3:2 oran ve `object-fit: contain` ile yerleştir. ✅
+- [x] İlk blog kartını masaüstünde öne çıkan geniş kart, mobilde normal tek sütun kart yap. ✅
 - [x] Telegram, YouTube, BiP, Instagram ve Facebook bağlantılarını ana sayfadan kaldırıp iletişim sayfasına taşı. ✅
 - [x] İletişim sayfasına kalın “Sosyal Medya Hesaplarımız” başlığı ve marka simgeleri ekle. ✅
 - [x] İletişim sayfasına Berker Temizlik Araçları Google Haritası ekle. ✅

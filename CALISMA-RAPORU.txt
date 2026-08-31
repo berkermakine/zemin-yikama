@@ -47,9 +47,16 @@ Canlıya yükleme yapılmadı. Kullanıcının yerel kontrolü ve açık onayı 
 - 375 px, 650 px ve masaüstü kırılımları için taşma önleyici kurallar eklendi.
 
 6. BLOG GÖRSELLERİ
-- Blog kapakları Titan 90, Titan 140 ve Titan 240 görselleriyle güncellendi.
-- Makinelerin kutuya tam oturması için object-fit: contain kullanıldı.
-- Blog görsellerinin dosyaları yerelde HTTP 200 cevabıyla doğrulandı.
+- Kullanıcının verdiği yedi yeni görsel blog sistemine aktarıldı.
+- Ecoline B45, B140, Titan 90, Titan 140, Titan 240, B250 ve B60 için ayrı blog görselleri oluşturuldu.
+- Kaynak PNG görseller 1536x1024 WebP formatına optimize edildi.
+- Toplam görsel yükü yaklaşık 16 MB seviyesinden yaklaşık 1,8 MB seviyesine indirildi.
+- Blog kartı ve aynı blog yazısının iç kapağı aynı görseli kullanıyor.
+- Görseller 3:2 oranında ve object-fit: contain ile kırpılmadan tam gösteriliyor.
+- Masaüstünde ilk blog kartı öne çıkan geniş kart haline getirildi.
+- Mobilde bütün kartlar tek sütuna dönüyor ve tam görsel oranı korunuyor.
+- Yedi görselin tamamı yerelde HTTP 200 cevabıyla doğrulandı.
+- Örnek blog kartı ve yazı içi kapak eşleşmesi doğrulandı.
 
 7. SOSYAL MEDYA
 - Sosyal medya alanı ana sayfadan kaldırıldı.
@@ -94,6 +101,8 @@ Canlıya yükleme yapılmadı. Kullanıcının yerel kontrolü ve açık onayı 
 - Ana sayfa, admin, yedek parça, blog, iletişim, ödeme ve Merchant XML: HTTP 200
 - Production build: Başarılı
 - Hostinger standalone çıktısı: Hazır
+- Yeni blog görselleri: 7/7 başarılı
+- Blog kartı ve yazı içi görsel eşleşmesi: Başarılı
 
 12. YEREL KONTROL ADRESLERİ
 Ana sayfa: http://localhost:3000/

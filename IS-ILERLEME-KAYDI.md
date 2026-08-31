@@ -39,8 +39,11 @@ Yayın durumu: **Canlıya alınmadı; kullanıcı yerel kontrolü bekleniyor.**
 
 ### Blog, sosyal medya ve iletişim
 
-- Blog kapakları Titan 90, Titan 140 ve Titan 240 görselleriyle güncellendi.
-- Görsellerin kutuya tam oturması için `object-fit: contain` kullanıldı.
+- Kullanıcının verdiği B45, B140, Titan 90, Titan 140, Titan 240, B250 ve B60 görselleri blog kapaklarına uygulandı.
+- Yedi görsel 1536×1024 WebP olarak optimize edildi.
+- Her blog kartı ve ilgili yazının iç kapağı aynı görseli kullanıyor.
+- Görsellerin masaüstü ve mobil kutuya tam oturması için 3:2 oran ve `object-fit: contain` kullanıldı.
+- İlk blog kartı masaüstünde geniş ve öne çıkan bir düzen aldı; mobilde tek sütuna dönüyor.
 - Sosyal medya alanı ana sayfadan kaldırılıp iletişim sayfasına taşındı.
 - “Sosyal Medya Hesaplarımız” başlığı kalın ve belirgin hale getirildi.
 - Telegram, YouTube, BiP, Instagram ve Facebook için marka simgeleri eklendi.
@@ -88,6 +91,9 @@ Yayın durumu: **Canlıya alınmadı; kullanıcı yerel kontrolü bekleniyor.**
 - Sosyal medya alanının ana sayfadan kaldırılması: **Başarılı**
 - Sosyal medya alanının iletişim sayfasında oluşması: **Başarılı**
 - Fırça Diski eski görsel geri yükleme: **Başarılı**
+- Yeni blog görselleri: **7/7 HTTP 200**
+- Blog listesinde yeni görseller: **7/7 başarılı**
+- Blog yazısı ile kart kapağı eşleşmesi: **Başarılı**
 
 ## Kullanıcının Kontrol Edeceği Yerel Sayfalar
 
