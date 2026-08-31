@@ -42,9 +42,20 @@ Bu dosya projenin kalıcı görev ve doğrulama kaydıdır. Yeni istekler önce 
 
 - [x] Blog kapaklarında Titan 90, Titan 140 ve Titan 240 makine görsellerini kullan. ✅
 - [x] Blog görsellerinde makinenin kutuya taşmadan oturması için `object-fit: contain` uygula. ✅
-- [x] Ana sayfaya Telegram, YouTube, BiP, Instagram ve Facebook bağlantıları ekle. ✅
+- [x] Telegram, YouTube, BiP, Instagram ve Facebook bağlantılarını ana sayfadan kaldırıp iletişim sayfasına taşı. ✅
+- [x] İletişim sayfasına kalın “Sosyal Medya Hesaplarımız” başlığı ve marka simgeleri ekle. ✅
 - [x] İletişim sayfasına Berker Temizlik Araçları Google Haritası ekle. ✅
+- [x] Fırça Diski 17 İnç Orta Sert ürününün deneme görselini kaldırıp eski `/parts/part-0.webp` görselini kalıcı depoda geri yükle. ✅
 - [ ] Kullanıcının masaüstü ve mobil görsel kontrolü.
+
+## Mobil Admin Paneli
+
+- [x] Mobilde yatay kaydırılan yönetim sekmelerini kaldır. ✅
+- [x] Mobil site düzenine uygun sabit hamburger/menü çubuğu ekle. ✅
+- [x] Açılır yönetim menüsüne tüm admin bölümlerini iki sütunlu, rahat dokunulan düğmelerle yerleştir. ✅
+- [x] Menü dışına dokununca kapanan arka plan katmanı ve erişilebilir `aria-expanded` durumu ekle. ✅
+- [x] Ürün tablosu, düzenleme formu, istatistikler ve yönetim listelerini mobil tek sütun düzeninde koru. ✅
+- [x] Hareket azaltma tercihini destekle. ✅
 
 ## Son Kontroller
 

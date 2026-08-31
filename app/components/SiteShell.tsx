@@ -140,7 +140,14 @@ const benefitSets:Record<BenefitVariant,[string,string,string][]>= {
  contact:[['♙','Hızlı Geri Dönüş','Talebiniz doğru ekibe yönlendirilir'],['◈','Telefon Desteği','Doğrudan uzman ekiple görüşün'],['✹','WhatsApp İletişimi','Hızlı bilgi ve görsel paylaşımı'],['⚙','Teklif Yönlendirme','İhtiyacınıza özel teklif süreci'],['◉','Satış Sonrası Destek','Servis ve parça desteği']],
  quote:[['♙','İhtiyaç Analizi','Saha bilgilerinizi birlikte netleştirin'],['◈','Uygun Model Eşleşmesi','Doğru makine sınıfına yönelin'],['✹','Şeffaf Teklif','Teknik ve ticari kapsamı görün'],['⚙','Hızlı İletişim','WhatsApp üzerinden kolayca iletin'],['◉','Satış Sonrası Destek','Teslimat sonrasında da yanınızdayız']]
 };
-function Benefits({variant='general'}:{variant?:BenefitVariant}){return <section className={`darkBenefits benefits-${variant}`}>{benefitSets[variant].map(x=><div key={x[1]}><i aria-hidden="true">{x[0]}</i><span><b>{x[1]}</b><small>{x[2]}</small></span></div>)}</section>}
+function ContactSocial(){const channels=[
+ {name:'Telegram',href:'https://web.telegram.org/k/#/im?p=@BerkerMakine',icon:'https://cdn.simpleicons.org/telegram/26A5E4'},
+ {name:'YouTube',href:'https://www.youtube.com/channel/UC69kmlibDul1XBaHWMlg-OQ',icon:'https://cdn.simpleicons.org/youtube/FF0000'},
+ {name:'BiP',href:'https://channels.bip.ai/join/berkermakine',icon:'https://channels.bip.ai/favicon.ico'},
+ {name:'Instagram',href:'https://www.instagram.com/berkermakine/',icon:'https://cdn.simpleicons.org/instagram/E4405F'},
+ {name:'Facebook',href:'https://www.facebook.com/BerkerMakine',icon:'https://cdn.simpleicons.org/facebook/0866FF'},
+];return <section className="contactSocial" aria-labelledby="contact-social-title"><div><small>BERKER MAKİNE RESMİ HESAPLARI</small><h2 id="contact-social-title">Sosyal Medya Hesaplarımız</h2><p>Yeni makineler, uygulama videoları ve güncel duyurular için resmi hesaplarımızı takip edin.</p></div><nav aria-label="Sosyal medya hesaplarımız">{channels.map(channel=><a href={channel.href} target="_blank" rel="noopener noreferrer" key={channel.name}><span><img src={channel.icon} alt="" aria-hidden="true"/></span><b>{channel.name}</b><em>Hesabı aç →</em></a>)}</nav></section>}
+function Benefits({variant='general'}:{variant?:BenefitVariant}){return <><section className={`darkBenefits benefits-${variant}`}>{benefitSets[variant].map(x=><div key={x[1]}><i aria-hidden="true">{x[0]}</i><span><b>{x[1]}</b><small>{x[2]}</small></span></div>)}</section>{variant==='contact'&&<ContactSocial/>}</>}
 function BottomCTA(){return <section className="bottomCta"><div><small>DOĞRU MAKİNEYİ BİRLİKTE BELİRLEYELİM</small><h2>Sahanız için uygun çözümü bulun.</h2><p>Alan, zemin ve çalışma düzeninizi paylaşın; doğrulanmış bilgilerle ilerleyin.</p></div><a className="greenBtn" href="/teklif-al">HEMEN TEKLİF AL →</a></section>}
 function MachineGraphic({tone=0}:{tone?:number}){return <div className={`cssMachine tone${tone}`}><i/><em/><b/><span/></div>}
 

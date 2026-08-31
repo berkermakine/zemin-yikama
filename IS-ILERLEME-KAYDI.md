@@ -41,9 +41,25 @@ Yayın durumu: **Canlıya alınmadı; kullanıcı yerel kontrolü bekleniyor.**
 
 - Blog kapakları Titan 90, Titan 140 ve Titan 240 görselleriyle güncellendi.
 - Görsellerin kutuya tam oturması için `object-fit: contain` kullanıldı.
-- Ana sayfaya Telegram, YouTube, BiP, Instagram ve Facebook bağlantıları eklendi.
+- Sosyal medya alanı ana sayfadan kaldırılıp iletişim sayfasına taşındı.
+- “Sosyal Medya Hesaplarımız” başlığı kalın ve belirgin hale getirildi.
+- Telegram, YouTube, BiP, Instagram ve Facebook için marka simgeleri eklendi.
 - İletişim sayfasına Berker Temizlik Araçları Google Haritası eklendi.
 - Ana sayfa, blog ve iletişim çıktılarında bu içeriklerin gerçekten üretildiği doğrulandı.
+
+### Mobil admin paneli
+
+- Yatay kayan sekme şeridi kaldırıldı.
+- Mobil site gibi çalışan sabit hamburger menüsü eklendi.
+- Menüde tüm admin bölümleri geniş dokunma alanlarıyla iki sütunda sunuluyor.
+- Açık bölüm menü çubuğunda gösteriliyor.
+- Menü dışına dokununca kapanma, klavye erişilebilirliği ve hareket azaltma desteği eklendi.
+- Ürün tablosu, formlar, istatistik kartları ve sipariş listesi mobil tek sütun düzeninde korunuyor.
+
+### Ürün görseli geri yükleme
+
+- Fırça Diski 17 İnç Orta Sert ürününde deneme amacıyla yüklenen görsel kaldırıldı.
+- Eski görsel `/parts/part-0.webp` hem ürün kaydına hem `imageUrl` alanına kalıcı olarak geri yazıldı.
 
 ### Product Schema ve SEO
 
@@ -68,6 +84,10 @@ Yayın durumu: **Canlıya alınmadı; kullanıcı yerel kontrolü bekleniyor.**
 - Ürün görseli yükleme: **Başarılı**
 - Ana sayfa, admin, yedek parça, blog, iletişim, ödeme ve Merchant XML HTTP kontrolü: **200 / Başarılı**
 - Production build: **Başarılı**
+- Mobil admin bileşen ve CSS derlemesi: **Başarılı**
+- Sosyal medya alanının ana sayfadan kaldırılması: **Başarılı**
+- Sosyal medya alanının iletişim sayfasında oluşması: **Başarılı**
+- Fırça Diski eski görsel geri yükleme: **Başarılı**
 
 ## Kullanıcının Kontrol Edeceği Yerel Sayfalar
 
