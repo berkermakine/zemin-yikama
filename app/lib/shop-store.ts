@@ -116,3 +116,9 @@ export async function updateOrderStatus(id:string,status:string){
  if(database){await ensureD1(database);await database.prepare('UPDATE orders SET status = ? WHERE id = ?').bind(status,id).run();return}
  const store=await readFileStore();store.orders=store.orders.map(order=>order.id===id?{...order,status}:order);await writeFileStore(store);
 }
+
+export async function deleteOrder(id:string){
+ const database=await d1();
+ if(database){await ensureD1(database);await database.prepare('DELETE FROM orders WHERE id = ?').bind(id).run();return}
+ const store=await readFileStore();store.orders=store.orders.filter(order=>order.id!==id);await writeFileStore(store);
+}

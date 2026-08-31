@@ -78,12 +78,24 @@ export function isSameOrigin(request: Request) {
   const fetchSite = request.headers.get('sec-fetch-site');
   if (fetchSite === 'same-origin') return true;
   const origin = request.headers.get('origin');
-  if (!origin) return false;
   const url = new URL(request.url);
   const forwardedHost = request.headers.get('x-forwarded-host')?.split(',')[0]?.trim();
   const forwardedProto = request.headers.get('x-forwarded-proto')?.split(',')[0]?.trim() || 'https';
   const expected = forwardedHost ? `${forwardedProto}://${forwardedHost}` : url.origin;
-  return origin === expected || origin === url.origin;
+  if (origin) return origin.toLowerCase() === expected.toLowerCase() || origin.toLowerCase() === url.origin.toLowerCase();
+  const referer = request.headers.get('referer');
+  if (!referer) return false;
+  try {
+    const refererOrigin = new URL(referer).origin.toLowerCase();
+    return refererOrigin === expected.toLowerCase() || refererOrigin === url.origin.toLowerCase();
+  } catch {
+    return false;
+  }
+}
+
+export function requestIsSecure(request: Request) {
+  const forwardedProto = request.headers.get('x-forwarded-proto')?.split(',')[0]?.trim().toLowerCase();
+  return forwardedProto ? forwardedProto === 'https' : new URL(request.url).protocol === 'https:';
 }
 
 export async function adminAuthorized(request:Request){

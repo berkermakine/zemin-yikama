@@ -1,5 +1,5 @@
 import {adminAuthorized,isSameOrigin,privateHeaders} from '../../../lib/admin-auth';
-import {addOrder,getOrders,updateOrderStatus,type ShopOrder} from '../../../lib/shop-store';
+import {addOrder,deleteOrder,getOrders,updateOrderStatus,type ShopOrder} from '../../../lib/shop-store';
 
 const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:privateHeaders});
 export async function GET(request:Request){return (await adminAuthorized(request))?json({orders:await getOrders()}):json({ok:false},401)}
@@ -15,4 +15,10 @@ export async function PATCH(request:Request){
  let body:{id?:unknown;status?:unknown};try{body=await request.json()}catch{return json({ok:false},400)}
  const status=String(body.status||'').slice(0,60);const id=String(body.id||'').slice(0,40);if(!id||!status)return json({ok:false},400);
  await updateOrderStatus(id,status);return json({ok:true});
+}
+export async function DELETE(request:Request){
+ if(!isSameOrigin(request)||!(await adminAuthorized(request)))return json({ok:false},401);
+ let body:{id?:unknown};try{body=await request.json()}catch{return json({ok:false},400)}
+ const id=String(body.id||'').slice(0,40);if(!id)return json({ok:false},400);
+ await deleteOrder(id);return json({ok:true});
 }

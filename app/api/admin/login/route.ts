@@ -1,4 +1,4 @@
-import {ADMIN_COOKIE, SESSION_TTL_SECONDS, createSessionToken, credentialsMatch, isSameOrigin, privateHeaders} from '../../../lib/admin-auth';
+import {ADMIN_COOKIE, SESSION_TTL_SECONDS, createSessionToken, credentialsMatch, isSameOrigin, privateHeaders, requestIsSecure} from '../../../lib/admin-auth';
 
 const attempts = new Map<string, {count: number; resetAt: number}>();
 
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
   attempts.delete(key);
   const token = await createSessionToken();
-  const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : '';
+  const secure = requestIsSecure(request) ? '; Secure' : '';
   return new Response(JSON.stringify({ok: true}), {
     status: 200,
     headers: {...privateHeaders, 'Set-Cookie': `${ADMIN_COOKIE}=${encodeURIComponent(token)}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${SESSION_TTL_SECONDS}${secure}`},
