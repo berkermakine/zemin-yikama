@@ -37,3 +37,9 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Runtime shop data must never be packaged into or overwritten by a deployment.
+/data/shop-store.json
+/data/shop-store.json.tmp
+/data/uploads/
+/.test-data/

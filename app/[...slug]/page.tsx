@@ -3,6 +3,7 @@ import {notFound,permanentRedirect} from 'next/navigation';
 import SiteShell from '../components/SiteShell';
 import {blogPosts,CONTENT_DATE,machineSeo,sectorPages,SITE_URL,sparePartSeo} from '../seo-content';
 import {getProducts,type ShopProduct} from '../lib/shop-store';
+import {legalPages} from '../legal-content';
 
 type RouteSeo={title:string;description:string;canonical?:string;index?:boolean;image?:string;type?:'website'|'article'};
 
@@ -33,7 +34,8 @@ const staticRoutes:Record<string,RouteSeo>={
  odeme:{title:'Sipariş Talebi',description:'Yedek parça sipariş talebinizi tamamlayın.',index:false},
  admin:{title:'Yönetim',description:'Yönetim alanı.',index:false},
  'lp/zemin-yikama-makinesi':{title:'Profesyonel Zemin Yıkama Makineleri',description:'Profesyonel zemin yıkama makinesi çözümleri.',canonical:'/zemin-yikama-makineleri',index:false},
- 'lp/kiralama':{title:'Zemin Yıkama Makinesi Kiralama',description:'Zemin yıkama makinesi kiralama çözümleri.',canonical:'/kiralama',index:false}
+ 'lp/kiralama':{title:'Zemin Yıkama Makinesi Kiralama',description:'Zemin yıkama makinesi kiralama çözümleri.',canonical:'/kiralama',index:false},
+ ...Object.fromEntries(Object.values(legalPages).map(page=>[page.slug,{title:page.title,description:page.description}]))
 };
 
 function redirectLegacy(slug:string[]){

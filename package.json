@@ -10,7 +10,8 @@
     "build": "vinext build && node scripts/prepare-hosting.mjs",
     "start": "node .next/standalone/server.js",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "verify:routes": "node scripts/verify-production-routes.mjs"
+    "verify:routes": "node scripts/verify-production-routes.mjs",
+    "verify:live-products": "node scripts/verify-live-product-snapshot.mjs"
   },
   "dependencies": {
     "@fontsource/roboto-condensed": "^5.2.8",

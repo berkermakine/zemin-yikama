@@ -12,6 +12,7 @@ const nextConfig:NextConfig={output:'standalone',async headers(){return [{source
  {source:'/makineler/:path*',destination:'/zemin-yikama-makineleri/:path*',permanent:true},
  {source:'/shop',destination:'/yedek-parca',permanent:true},
  {source:'/shop/:path*',destination:'/yedek-parca/:path*',permanent:true},
+ {source:'/iade-politikasi',destination:'/iade-ve-iptal-politikasi',permanent:true},
  {source:'/makine-kiralama',destination:'/kiralama',permanent:true},
  {source:'/teknik-servis',destination:'/servis',permanent:true},
  {source:'/iletisim-formu',destination:'/teklif-al',permanent:true},

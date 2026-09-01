@@ -7,7 +7,7 @@ export async function GET(){return json({products:await getProducts()})}
 export async function PUT(request:Request){
  if(!isSameOrigin(request)||!(await adminAuthorized(request)))return json({ok:false,message:'Yetkisiz işlem.'},401);
  let body:{products?:unknown};try{body=await request.json()}catch{return json({ok:false,message:'Geçersiz veri.'},400)}
- if(!Array.isArray(body.products)||body.products.length>500)return json({ok:false,message:'Ürün listesi geçersiz.'},400);
+ if(!Array.isArray(body.products)||body.products.length===0||body.products.length>500)return json({ok:false,message:'Ürün listesi boş bırakılamaz veya geçersiz.'},400);
  const products=body.products.filter((value):value is ShopProduct=>Boolean(value&&typeof value==='object')).map((product,index)=>({
   ...product,
   id:Number(product.id)||Date.now()+index,
