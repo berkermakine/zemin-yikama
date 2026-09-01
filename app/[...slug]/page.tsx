@@ -6,6 +6,13 @@ import {getProducts,type ShopProduct} from '../lib/shop-store';
 
 type RouteSeo={title:string;description:string;canonical?:string;index?:boolean;image?:string;type?:'website'|'article'};
 
+function decodeRouteSlug(slug:string[]){
+ return slug.map(segment=>{
+  try{return decodeURIComponent(segment).normalize('NFC')}
+  catch{return segment.normalize('NFC')}
+ });
+}
+
 const staticRoutes:Record<string,RouteSeo>={
  'zemin-yikama-makineleri':{title:'Profesyonel Zemin Yıkama Makinesi Modelleri',description:'Berker Ecoline binicili ve itmeli profesyonel zemin yıkama makinelerini özellikleri, kullanım alanları ve ürün galerileriyle inceleyin.'},
  'zemin-yikama-makineleri/binicili':{title:'Binicili Zemin Yıkama Makineleri',description:'Fabrika, depo, AVM ve geniş alanlar için Berker Ecoline binicili zemin yıkama makinelerini karşılaştırın.'},
@@ -48,7 +55,8 @@ function getRouteSeo(slug:string[],products:ShopProduct[]=sparePartSeo):RouteSeo
 function absolute(path:string){return new URL(path,SITE_URL).toString()}
 
 export async function generateMetadata({params}:{params:Promise<{slug:string[]}>}):Promise<Metadata>{
- const {slug}=await params;
+ const routeParams=await params;
+ const slug=decodeRouteSlug(routeParams.slug);
  const products=slug[0]==='yedek-parca'?await getProducts():undefined;
  const route=getRouteSeo(slug,products);
  if(!route)return {title:'Sayfa Bulunamadı',robots:{index:false,follow:false}};
@@ -88,7 +96,8 @@ function pageSchemas(slug:string[],route:RouteSeo,products:ShopProduct[]=sparePa
 }
 
 export default async function CatchAll({params}:{params:Promise<{slug:string[]}>}){
- const {slug}=await params;
+ const routeParams=await params;
+ const slug=decodeRouteSlug(routeParams.slug);
  redirectLegacy(slug);
  const products=slug[0]==='yedek-parca'?await getProducts():undefined;
  const route=getRouteSeo(slug,products);
